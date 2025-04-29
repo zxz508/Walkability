@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.myapp">
+
+    <!-- 位置权限及网络权限 -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" tools:ignore="DuplicateUsesFeature" />
+    <!-- 存储权限（适用于 targetSdkVersion <= 32） -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+
+    <!-- MANAGE_EXTERNAL_STORAGE 权限仅在必要时申请，通常只针对特定需求 -->
+    <!-- <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" /> -->
+    <!-- 应用级配置 -->
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        android:networkSecurityConfig="@xml/network_security_config"
+        >
+
+        <service android:name="com.amap.api.location.APSService" />
+        <!-- Google 地图和高德地图 API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA-ttWe2GvxZw1EC6mxwqzvY6UizJglz-4"/>
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ff400ed61988bc1490c08f3544e36ebf"/>
+
+        <!-- 添加高德定位相关服务（必须放在 <application> 内） -->
+
+
+        <!-- MainActivity 配置 -->
+        <activity
+            android:name="com.example.myapp.Activities.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApp"
+            android:windowSoftInputMode="adjustPan"
+            android:colorMode="default">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- LoginActivity 配置 -->
+        <activity
+            android:name="com.example.myapp.Activities.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApp"
+            tools:ignore="WrongManifestParent"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.myapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+</manifest>

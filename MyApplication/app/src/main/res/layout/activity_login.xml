@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@drawable/animation1"
+    tools:ignore="ExtraText">
+
+    <!-- 应用标题 -->
+    <TextView
+        android:id="@+id/app_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Walkability APP"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/holo_blue_light"
+        android:shadowColor="#80000000"
+        android:shadowDx="8"
+        android:shadowDy="8"
+        android:shadowRadius="8" />
+
+    <!-- 用户名输入框 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_user" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Username"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/black"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <!-- 密码输入框 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_lock" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Password"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:inputType="textPassword"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <!-- 使用 ConstraintLayout 包装按钮 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <!-- 登录按钮 -->
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintWidth_percent="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <!-- 注册按钮 -->
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintWidth_percent="0.95"
+            app:layout_constraintTop_toBottomOf="@+id/login_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
